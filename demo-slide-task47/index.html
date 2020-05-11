@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <title>floating layer</title>
+    <style>
+        .window{
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+        }
+        .slides{
+            height: 100px;
+            width: 300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        let view = new Vue({
+            el:"#app",
+            data:{
+                transformValue: ''
+            },
+            template:`
+            <div class="window">
+                <div class="slides" 
+                    v-bind:style="{transform:transformValue}">  
+                </div>
+                <button v-on:click="go(0)">1</button>
+                <button v-on:click="go(1)">2</button>
+                <button v-on:click="go(2)">3</button>
+            </div>
+            `,
+            methods:{
+                go(index){
+                    this.transformValue = `translateX(${-100 * index}px)`
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
